@@ -1,6 +1,7 @@
 from pprint import pprint
 from random import randint
 
+
 def board():
     """
     Creates game board
@@ -12,26 +13,30 @@ def board():
         for x in range(size):
             list.append(".")
         empty_game_board.append(list)
-    game_board = add_ships(empty_game_board)    
+        
+    return empty_game_board
 
-    return game_board
 
-def add_ships(list):
+def add_computer_ships():
+
     """
-    Add 4 ships in the board by choosing a random index
+    Add 4 ships in the computer board randomly
     """
+
     ships = 0
+    koord = []
     while ships < 5:
         x = randint(0,4)
         y = randint(0,4)
-        if list[x][y] == "*":
-            continue
-        for i in range(5):
-            ships_row = list[i].count("*")
-            ships += ships_row
-        list[x][y] = "*"
+        for i in range(len(koord)):
+            if x == koord[i][0] and y == koord[i][1]:
+                continue
+        ship_koord = [x, y]    
+        koord.append(ship_koord)
+        ships += 1
             
-    return list
+    return koord
+
 
 def computer_choice():
     """
@@ -50,6 +55,7 @@ def computer_choice():
     
     return choices
 
+
 def new_game():
     """
     Start a new game
@@ -63,6 +69,16 @@ def new_game():
     a = computer_board[0].count(".")
     print(a)
     pprint(computer_board)
+
+    print("")
+    print("Players Ships populated in following places")
+    player_ships = add_player_ships()
+    print(player_ships)
+
+    print("")
+    print("Computers Ships populated in following places")
+    computer_ships = add_computer_ships()
+    print(computer_ships)
 
     print("")
     print("The choice of the computer is:")
