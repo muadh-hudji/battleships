@@ -19,13 +19,17 @@ def add_ships(list):
     """
     Add 4 ships in the board by choosing a random index
     """
-    ships = 4
-    while ships != 0:
+    ships = 0
+    while ships < 5:
         x = randint(0,4)
         y = randint(0,4)
-        if list.count("*") != 0:
-            list[x][y] = "*"
-            ships -= 1
+        if list[x][y] == "*":
+            continue
+        for i in range(5):
+            ships_row = list[i].count("*")
+            ships += ships_row
+        list[x][y] = "*"
+            
     return list
 
 def new_game():
@@ -38,6 +42,8 @@ def new_game():
     pprint(player_board)
     print("*"*28)
     print("Computer board")
+    a = computer_board[0].count(".")
+    print(a)
     pprint(computer_board)
 
 
