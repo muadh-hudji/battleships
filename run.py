@@ -55,8 +55,9 @@ def add_player_ships():
             data = [int(data_row), int(data_col)]
             koord.append(data)
             ships += 1
+            print(f"Ship placed in row {data_row} and column {data_col}")
             if ships == 4:
-                print("Well done! You placed out your ships.")
+                print("Well done! You placed out all your ships.")
                 break
     return koord
 
@@ -89,6 +90,16 @@ def validate_data(row, col, koord):
             return False            
     return True    
 
+
+def populate_ships(user_board, ships):
+    """
+    This function will place out the ships in the player board
+    to display it to the terminal
+    """
+    for i in range(len(ships)):
+        user_board[ships[i][0]][ships[i][1]] = "¤"
+    return user_board
+    
 
 def computer_choice():
     """
@@ -131,6 +142,7 @@ def new_game():
     player_ships = add_player_ships()
     print(player_ships)
 
+    populated_board = populate_ships(player_board, player_ships)
 
     # print("")
     # print("The choice of the computer is:")
