@@ -17,7 +17,7 @@ def board():
     return empty_game_board
 
 
-def add_computer_ships():
+def add_ships_auto():
 
     """
     Add 4 ships in the computer board randomly
@@ -38,7 +38,7 @@ def add_computer_ships():
     return koord
 
 
-def add_player_ships():
+def add_ships_manually():
     """
     The function take an input from the player for 
     the rows and columns for the koordinate where 
@@ -125,24 +125,31 @@ def new_game():
     """
     player_board = board()
     computer_board = board()
-    print("Player board")
-    pprint(player_board)
-    print("*"*28)
-    print("Computer board")
-    a = computer_board[0].count(".")
-    print(a)
-    pprint(computer_board)
 
+    print("Do you want to place out your ships manually?")
+    choose_to_select = input("Enter any key for yes or n for no:\n")
+    if choose_to_select == "n":
+        player_ships = add_ships_auto()
+    else:
+        player_ships = add_ships_manually()
+    populated_board = populate_ships(player_board, player_ships)
+    print("")
+    print("*" * 28)
+    print("Player board")
+    pprint(populated_board)
+
+    print("")
+    print("Computer board")
+    pprint(computer_board)
+    print("*" * 28)
     print("")
     print("Computers Ships populated in following places")
-    computer_ships = add_computer_ships()
+    computer_ships = add_ships_auto()
     print(computer_ships)
+    
 
-    print("")
-    player_ships = add_player_ships()
-    print(player_ships)
 
-    populated_board = populate_ships(player_board, player_ships)
+    
 
     # print("")
     # print("The choice of the computer is:")
