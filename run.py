@@ -112,14 +112,33 @@ def computer_choice():
         choices = []
         x = randint(0,4)
         y = randint(0,4)
+        chosen = "no"
         for i in range(len(choices)):
             if x == choices[i][0] and y == choices[i][1]:
-                continue
+                chosen = "yes"
+        if chosen == "yes":
+            continue        
         choice = [x, y]    
         choices.append(choice)
         break    
     
     return choices
+
+
+def play_game(player, computer):
+    """
+    The function take the input of postion to attack
+    from the computer and player, and give the result
+    by displaying out the boards. 
+    """   
+    comp_choice = computer_choice()
+    print("")
+    print("Please enter the koordinate you want attack")
+    print("The numbers shall be between 0-4 for the row and column")
+    print("")
+    player_row = input("Enter row number:\n")
+    player_col = input("Enter column number:\n")
+    print("")
 
 
 def new_game():
@@ -138,21 +157,21 @@ def new_game():
     populated_board = populate_ships(player_board, player_ships)
     print("")
     print("*" * 28)
-    print("Player board")
+    print("        Player board")
+    print("*" * 28)
     pprint(populated_board)
 
     print("")
-    print("Computer board")
-    pprint(computer_board)
     print("*" * 28)
+    print("        Computer board")
+    print("*" * 28)
+    pprint(computer_board)
     print("")
     print("Computers Ships populated in following places")
     computer_ships = add_ships_auto()
     print(computer_ships)
-    
 
-
-    
+    play_game()
 
     # print("")
     # print("The choice of the computer is:")
