@@ -54,7 +54,8 @@ def add_ships_manually():
         print("The numbers shall be between 0-4 for the row and column")
         data_row = input("Enter row number:\n")
         data_col = input("Enter column number:\n")
-        if validate_data(data_row, data_col, koord):
+        type = "populate"
+        if validate_data(data_row, data_col, koord, type):
             data = [int(data_row), int(data_col)]
             koord.append(data)
             ships += 1
@@ -65,7 +66,7 @@ def add_ships_manually():
     return koord
 
 
-def validate_data(row, col, koord):
+def validate_data(row, col, koord, type):
     """
     Inside the try, converts all string values into integers.
     Raises ValueError if strings cannot be converted into int,
@@ -82,11 +83,15 @@ def validate_data(row, col, koord):
         print(f"Invalid data: {e}, please try again.\n")
         return False
     
+    if type == "populate":
+        message = f"You have already placed a ship in row {row} and column {col}"
+    else:
+        message = f"You have already attacked the position at row {row} and column {col}"
     for i in range(len(koord)):
         try:
             if int(row) == koord[i][0] and int(col) == koord[i][1]:
                 raise ValueError(
-                    f"You have already placed a ship in row {row} and column {col}"
+                    message
                 )
         except ValueError as e:
             print(f"Invalid data: {e}, please try again.\n")
@@ -125,20 +130,28 @@ def computer_choice():
     return choices
 
 
-def play_game(player, computer):
+def play_game(player, computer, list_choices):
     """
     The function take the input of postion to attack
     from the computer and player, and give the result
     by displaying out the boards. 
     """   
-    comp_choice = computer_choice()
-    print("")
-    print("Please enter the koordinate you want attack")
-    print("The numbers shall be between 0-4 for the row and column")
-    print("")
-    player_row = input("Enter row number:\n")
-    player_col = input("Enter column number:\n")
-    print("")
+    comp_choices = computer_choice()
+    list = list_choices
+    while True:
+        print("")
+        print("Please enter the koordinate you want attack")
+        print("The numbers shall be between 0-4 for the row and column")
+        print("")
+        player_row = input("Enter row number:\n")
+        player_col = input("Enter column number:\n")
+        print("")
+        type = "attack"
+        if validate_data(player_row, player_col, list, type):
+            attack_postion = [int(player_row), int(player_col)]
+            list_choices.append(attack_postion)
+            break
+    print(list_choices)        
 
 
 def new_game():
@@ -147,6 +160,7 @@ def new_game():
     """
     player_board = board()
     computer_board = board()
+    list_player_choices = []
 
     print("Do you want to place out your ships manually?")
     choose_to_select = input("Enter any key for yes or n for no:\n")
@@ -171,7 +185,7 @@ def new_game():
     computer_ships = add_ships_auto()
     print(computer_ships)
 
-    play_game()
+    play_game(player_board, computer_board, list_player_choices)
 
     # print("")
     # print("The choice of the computer is:")
