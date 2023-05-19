@@ -20,17 +20,20 @@ def board():
 def add_ships_auto():
 
     """
-    Add 4 ships in the computer board randomly
+    Add 5 ships in the computer board randomly
     """
 
     ships = 0
     koord = []
-    while ships < 5:
+    while ships < 4:
         x = randint(0,4)
         y = randint(0,4)
+        busy = "no"
         for i in range(len(koord)):
             if x == koord[i][0] and y == koord[i][1]:
-                continue
+                busy = "yes"
+        if busy == "yes":
+            continue        
         ship_koord = [x, y]    
         koord.append(ship_koord)
         ships += 1
