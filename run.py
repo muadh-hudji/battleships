@@ -99,15 +99,16 @@ def validate_data(row, col, koord, type):
     return True    
 
 
-def populate_ships(user_board, ships):
+def populate_board(board, ships):
     """
     This function will place out the ships in the player board
     to display it to the terminal
     """
     for i in range(len(ships)):
-        user_board[ships[i][0]][ships[i][1]] = "¤"
-    return user_board
-    
+        board[ships[i][0]][ships[i][1]] = "#"
+
+    return board        
+
 
 def computer_choice():
     """
@@ -130,17 +131,45 @@ def computer_choice():
     return choices
 
 
-def play_game(player, computer):
+def attack_board(board0, board1, list, score):
+    """
+    Attack board makes changes on the board by adding attack position
+    """
+    if board1[list[-1][0]][list[-1][1]] == "#":
+        board1[list[-1][0]][list[-1][1]] = "*"
+        board0[list[-1][0]][list[-1][1]] = "*"
+        message = "made a hit"
+        score += 1
+    else:
+        board1[list[-1][0]][list[-1][1]] = "X"
+        board0[list[-1][0]][list[-1][1]] = "X"
+        message = "missed"
+    return board0, board1, message, score
+
+
+def play_game(player_board, computer_board):
     """
     The function take the input of postion to attack
     from the computer and player, and give the result
     by displaying out the boards. 
-    """   
-    comp_choices = computer_choice()
+    """
     list_choices = []
-    list_choices = add_data_manually(list_choices, 1, "attack")
-    print(list_choices)
-     
+    hide_board = board()
+    computer_score = 0
+    user_score = 0
+    while True:
+        list_choices = add_data_manually(list_choices, 1, "attack")
+        print(list_choices[-1])
+        hide_board, computer_board, message, user_score = attack_board(hide_board, computer_board, list_choices, user_score)
+        print(f"You {message}, your score: {user_score}")
+        print("")
+        print("*" * 28)
+        print("        Computer board")
+        print("*" * 28)
+        pprint(hide_board)
+        if user_score == 4 or computer_score == 4:
+            break
+        
 
 
 def new_game():
@@ -160,12 +189,12 @@ def new_game():
     else:
         player_ships = add_data_manually(list_ships_pos, num_ships, "populate")
         print("Well done! You placed out all your ships.")
-    populated_board = populate_ships(player_board, player_ships)
+    player_board = populate_board(player_board, player_ships)
     print("")
     print("*" * 28)
     print("        Player board")
     print("*" * 28)
-    pprint(populated_board)
+    pprint(player_board)
 
     print("")
     print("*" * 28)
@@ -176,6 +205,7 @@ def new_game():
     print("Computers Ships populated in following places")
     computer_ships = add_ships_auto()
     print(computer_ships)
+    computer_board = populate_board(computer_board, computer_ships)
 
     play_game(player_board, computer_board)
 
