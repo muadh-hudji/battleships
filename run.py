@@ -186,7 +186,11 @@ def play_game(player_board, computer_board):
             else:
                 print(f"You lost, your score is {user_score}, computer score is {computer_score}")    
             break
-        
+        print("")
+        print("Do you want to continue?")
+        continue_play = input("Enter any key for yes or n for no:\n")
+        if continue_play == "n":
+            break
 
 
 def new_game():
@@ -195,7 +199,6 @@ def new_game():
     """
     player_board = board()
     computer_board = board()
-    list_player_choices = []
     list_ships_pos = []
     num_ships = 4
 
@@ -225,11 +228,6 @@ def new_game():
     computer_board = populate_board(computer_board, computer_ships)
 
     play_game(player_board, computer_board)
-
-    # print("")
-    # print("The choice of the computer is:")
-    # comp_choice = computer_choice()
-    # print(comp_choice)
 
 
 new_game()
