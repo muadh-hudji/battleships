@@ -75,15 +75,19 @@ def validate_data(row, col, koord, type):
         int(col)
         if int(row) not in range(0, 5) or int(col) not in range(0, 5):
             raise ValueError(
-                f"The numbers should be between 0 - 4, you provided {row} for row, and {col} for column."
+                ("The numbers should be between 0 - 4, "
+                 + "you provided " + str(row) + " for row, and " +
+                 str(col) + " for column")
             )
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
         return False
     if type == "populate":
-        message = f"You have already placed a ship in row {row} and column {col}"
+        message = ("You have already placed a ship in row " + str(row) +
+                   " column " + str(col))
     else:
-        message = f"You have already attacked the position at row {row} and column {col}"
+        message = ("You have already attacked the position at row " +
+                   str(row) + " column " + str(col))
     for i in range(len(koord)):
         try:
             if int(row) == koord[i][0] and int(col) == koord[i][1]:
