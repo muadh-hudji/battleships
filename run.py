@@ -110,12 +110,11 @@ def populate_board(board, ships):
     return board        
 
 
-def computer_choice():
+def computer_choice(choices):
     """
     Function to produce a choice for the computer player
     """
     while True:
-        choices = []
         x = randint(0,4)
         y = randint(0,4)
         chosen = "no"
@@ -154,20 +153,38 @@ def play_game(player_board, computer_board):
     by displaying out the boards. 
     """
     list_choices = []
+    computer_choices = []
     hide_board = board()
     computer_score = 0
     user_score = 0
     while True:
         list_choices = add_data_manually(list_choices, 1, "attack")
         print(list_choices[-1])
-        hide_board, computer_board, message, user_score = attack_board(hide_board, computer_board, list_choices, user_score)
-        print(f"You {message}, your score: {user_score}")
+        hide_board, computer_board, message1, user_score = attack_board(hide_board, computer_board, list_choices, user_score)
+        
+        computer_choices = computer_choice(computer_choices)
+        player_board, player_board, message2, computer_score = attack_board(player_board, player_board, computer_choices, computer_score)
+
+        print(f"You {message1}, your score: {user_score}")
         print("")
+        print(f"Computer {message2}, computer score: {computer_score}")
         print("*" * 28)
         print("        Computer board")
         print("*" * 28)
+        pprint(player_board)
+
+        print("")
+        print("*" * 28)
+        print("        Player board")
+        print("*" * 28)
         pprint(hide_board)
         if user_score == 4 or computer_score == 4:
+            if user_score == 4 and computer_score == 4:
+                print(f"Draw, your score is {user_score}, computer score is {computer_score}")
+            elif user_score == 4:
+                print(f"Congratulation you win, your score is {user_score}, computer score is {computer_score}")
+            else:
+                print(f"You lost, your score is {user_score}, computer score is {computer_score}")    
             break
         
 
