@@ -148,6 +148,19 @@ def attack_board(board0, board1, list, score):
     return board0, board1, message, score
 
 
+def display_board(board):
+    """
+    Display board as a string and to delete square brackets and 
+    comma.
+    """
+    for i in range(len(board)):
+        string = ""
+        for j in range(5):
+            string += "    "
+            string += "".join(board[i][j])
+        print(string)    
+
+
 def play_game(player_board, computer_board):
     """
     The function take the input of postion to attack
@@ -173,13 +186,13 @@ def play_game(player_board, computer_board):
         print("*" * 28)
         print("        Player board")
         print("*" * 28)
-        pprint(player_board)
+        display_board(player_board)
 
         print("")
         print("*" * 28)
         print("        Computer board")
         print("*" * 28)
-        pprint(hide_board)
+        display_board(hide_board)
         if user_score == 4 or computer_score == 4:
             if user_score == 4 and computer_score == 4:
                 print(f"Draw, your score is {user_score}, computer score is {computer_score}")
@@ -216,13 +229,13 @@ def new_game():
     print("*" * 28)
     print("        Player board")
     print("*" * 28)
-    pprint(player_board)
+    display_board(player_board)
 
     print("")
     print("*" * 28)
     print("        Computer board")
     print("*" * 28)
-    pprint(computer_board)
+    display_board(computer_board)
     print("")
     print("Computers Ships populated in following places")
     computer_ships = add_ships_auto()
