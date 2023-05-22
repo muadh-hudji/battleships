@@ -171,13 +171,13 @@ def play_game(player_board, computer_board):
         print("")
         print(f"Computer {message2}, computer score: {computer_score}")
         print("*" * 28)
-        print("        Computer board")
+        print("        Player board")
         print("*" * 28)
         pprint(player_board)
 
         print("")
         print("*" * 28)
-        print("        Player board")
+        print("        Computer board")
         print("*" * 28)
         pprint(hide_board)
         if user_score == 4 or computer_score == 4:
