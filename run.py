@@ -1,4 +1,3 @@
-from pprint import pprint
 from random import randint
 
 
@@ -32,24 +31,23 @@ def add_ships_auto():
             if x == koord[i][0] and y == koord[i][1]:
                 busy = "yes"
         if busy == "yes":
-            continue        
-        ship_koord = [x, y]    
+            continue
+        ship_koord = [x, y]
         koord.append(ship_koord)
         ships += 1
-            
     return koord
 
 
 def add_data_manually(koord, num, type):
     """
-    The function take an input from the player for 
-    the rows and columns for the koordinate where 
+    The function take an input from the player for
+    the rows and columns for the koordinate where
     the ships will be populated
     """
     if type == "populate":
         msg = "where the ships will be populated"
     else:
-        msg = "you want attack"    
+        msg = "you want attack"
     while num > 0:
         print("")
         print(f"Please enter the koordinate {msg}")
@@ -63,7 +61,6 @@ def add_data_manually(koord, num, type):
             num -= 1
             if type == "populate":
                 print(f"Ship placed in row {data_row} and column {data_col}")
-   
     return koord
 
 
@@ -83,7 +80,6 @@ def validate_data(row, col, koord, type):
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
         return False
-    
     if type == "populate":
         message = f"You have already placed a ship in row {row} and column {col}"
     else:
@@ -96,8 +92,8 @@ def validate_data(row, col, koord, type):
                 )
         except ValueError as e:
             print(f"Invalid data: {e}, please try again.\n")
-            return False            
-    return True    
+            return False
+    return True
 
 
 def populate_board(board, ships):
@@ -107,8 +103,7 @@ def populate_board(board, ships):
     """
     for i in range(len(ships)):
         board[ships[i][0]][ships[i][1]] = "#"
-
-    return board        
+    return board
 
 
 def computer_choice(choices):
@@ -116,18 +111,17 @@ def computer_choice(choices):
     Function to produce a choice for the computer player
     """
     while True:
-        x = randint(0,4)
-        y = randint(0,4)
+        x = randint(0, 4)
+        y = randint(0, 4)
         chosen = "no"
         for i in range(len(choices)):
             if x == choices[i][0] and y == choices[i][1]:
                 chosen = "yes"
         if chosen == "yes":
-            continue        
-        choice = [x, y]    
+            continue
+        choice = [x, y]
         choices.append(choice)
-        break    
-    
+        break
     return choices
 
 
@@ -149,7 +143,7 @@ def attack_board(board0, board1, list, score):
 
 def display_board(board):
     """
-    Display board as a string and to delete square brackets and 
+    Display board as a string and to delete square brackets and
     comma.
     """
     for i in range(len(board)):
@@ -157,14 +151,14 @@ def display_board(board):
         for j in range(5):
             string += "    "
             string += "".join(board[i][j])
-        print(string)    
+        print(string)
 
 
 def play_game(u_board, c_board):
     """
     The function take the input of postion to attack
     from the computer and player, and give the result
-    by displaying out the boards. 
+    by displaying out the boards.
     """
     list_choices = []
     computer_choices = []
@@ -173,11 +167,11 @@ def play_game(u_board, c_board):
     c_score = 0
     u_score = 0
     while True:
-        list_choices = add_data_manually(list_choices, 1, "attack")   
+        list_choices = add_data_manually(list_choices, 1, "attack")
         hide_board, c_board, msg1, u_score = attack_board(hide_board,
                                                           c_board,
                                                           list_choices,
-                                                          u_score)    
+                                                          u_score)
         computer_choices = computer_choice(computer_choices)
         x_board, u_board, msg2, c_score = attack_board(u_board,
                                                        u_board,
@@ -206,7 +200,7 @@ def play_game(u_board, c_board):
                 print(f"your score: {u_score}. Computer score: {c_score}")
             else:
                 print("You lost!")
-                print(f"Your score: {u_score}, Computer score: {c_score}")    
+                print(f"Your score: {u_score}, Computer score: {c_score}")
             break
         print("")
 
