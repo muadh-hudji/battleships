@@ -13,7 +13,6 @@ def board():
         for x in range(size):
             list.append(".")
         empty_game_board.append(list)
-        
     return empty_game_board
 
 
@@ -26,8 +25,8 @@ def add_ships_auto():
     ships = 0
     koord = []
     while ships < 4:
-        x = randint(0,4)
-        y = randint(0,4)
+        x = randint(0, 4)
+        y = randint(0, 4)
         busy = "no"
         for i in range(len(koord)):
             if x == koord[i][0] and y == koord[i][1]:
@@ -161,7 +160,7 @@ def display_board(board):
         print(string)    
 
 
-def play_game(player_board, computer_board):
+def play_game(u_board, c_board):
     """
     The function take the input of postion to attack
     from the computer and player, and give the result
@@ -170,42 +169,46 @@ def play_game(player_board, computer_board):
     list_choices = []
     computer_choices = []
     hide_board = board()
-    computer_score = 0
-    user_score = 0
+    x_board = board()
+    c_score = 0
+    u_score = 0
     while True:
-        list_choices = add_data_manually(list_choices, 1, "attack")
-        
-        hide_board, computer_board, message1, user_score = attack_board(hide_board, computer_board, list_choices, user_score)
-        
+        list_choices = add_data_manually(list_choices, 1, "attack")   
+        hide_board, c_board, msg1, u_score = attack_board(hide_board,
+                                                          c_board,
+                                                          list_choices,
+                                                          u_score)    
         computer_choices = computer_choice(computer_choices)
-        player_board, player_board, message2, computer_score = attack_board(player_board, player_board, computer_choices, computer_score)
+        x_board, u_board, msg2, c_score = attack_board(u_board,
+                                                       u_board,
+                                                       computer_choices,
+                                                       c_score)
         print("")
-        print(f"You {message1}, your score: {user_score}")
+        print(f"You {msg1}, your score: {u_score}")
         print("")
-        print(f"Computer {message2}, computer score: {computer_score}")
+        print(f"Computer {msg2}, computer score: {c_score}")
         print("*" * 28)
         print("        Player board")
         print("*" * 28)
-        display_board(player_board)
+        display_board(u_board)
 
         print("")
         print("*" * 28)
         print("        Computer board")
         print("*" * 28)
         display_board(hide_board)
-        if user_score == 4 or computer_score == 4:
-            if user_score == 4 and computer_score == 4:
-                print(f"Draw, your score is {user_score}, computer score is {computer_score}")
-            elif user_score == 4:
-                print(f"Congratulation you win, your score is {user_score}, computer score is {computer_score}")
+        if u_score == 4 or c_score == 4:
+            if u_score == 4 and c_score == 4:
+                print("Draw!")
+                print(f"Your score: {u_score}. Computer score: {c_score}")
+            elif u_score == 4:
+                print("Congratulation you win!")
+                print(f"your score: {u_score}. Computer score: {c_score}")
             else:
-                print(f"You lost, your score is {user_score}, computer score is {computer_score}")    
+                print("You lost!")
+                print(f"Your score: {u_score}, Computer score: {c_score}")    
             break
         print("")
-        print("Do you want to continue?")
-        continue_play = input("Enter any key for yes or n for no:\n")
-        if continue_play == "n":
-            break
 
 
 def new_game():
@@ -250,5 +253,5 @@ while True:
     print("Do you want to play?")
     play = input("Enter yes if you want to play\n")
     print(" ")
-    if play == "yes":
+    if play.lower() == "yes":
         new_game()
