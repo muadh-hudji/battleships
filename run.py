@@ -52,8 +52,10 @@ def add_data_manually(koord, num, type):
     else:
         msg = "you want attack"    
     while num > 0:
+        print("")
         print(f"Please enter the koordinate {msg}")
         print("The numbers shall be between 0-4 for the row and column")
+        print("")
         data_row = input("Enter row number:\n")
         data_col = input("Enter column number:\n")
         if validate_data(data_row, data_col, koord, type):
@@ -159,12 +161,12 @@ def play_game(player_board, computer_board):
     user_score = 0
     while True:
         list_choices = add_data_manually(list_choices, 1, "attack")
-        print(list_choices[-1])
+        
         hide_board, computer_board, message1, user_score = attack_board(hide_board, computer_board, list_choices, user_score)
         
         computer_choices = computer_choice(computer_choices)
         player_board, player_board, message2, computer_score = attack_board(player_board, player_board, computer_choices, computer_score)
-
+        print("")
         print(f"You {message1}, your score: {user_score}")
         print("")
         print(f"Computer {message2}, computer score: {computer_score}")
@@ -230,4 +232,10 @@ def new_game():
     play_game(player_board, computer_board)
 
 
-new_game()
+while True:
+    print("")
+    print("Do you want to play?")
+    play = input("Enter yes if you want to play\n")
+    print(" ")
+    if play == "yes":
+        new_game()
