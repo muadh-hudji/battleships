@@ -24,15 +24,15 @@ def add_ships_auto():
     ships = 0
     koord = []
     while ships < 4:
-        x = randint(0, 4)
-        y = randint(0, 4)
+        x_label = randint(0, 4)
+        y_label = randint(0, 4)
         busy = "no"
-        for i in range(len(koord)):
-            if x == koord[i][0] and y == koord[i][1]:
+        for index, value in enumerate(koord):
+            if x_label == value[0] and y_label == value[1]:
                 busy = "yes"
         if busy == "yes":
             continue
-        ship_koord = [x, y]
+        ship_koord = [x_label, y_label]
         koord.append(ship_koord)
         ships += 1
     return koord
@@ -79,8 +79,8 @@ def validate_data(row, col, koord, type):
                  + "you provided " + str(row) + " for row, and " +
                  str(col) + " for column")
             )
-    except ValueError as e:
-        print(f"Invalid data: {e}, please try again.\n")
+    except ValueError as e_msg:
+        print(f"Invalid data: {e_msg}, please try again.\n")
         return False
     if type == "populate":
         message = ("You have already placed a ship in row " + str(row) +
@@ -88,14 +88,14 @@ def validate_data(row, col, koord, type):
     else:
         message = ("You have already attacked the position at row " +
                    str(row) + " column " + str(col))
-    for i in range(len(koord)):
+    for index, value in enumerate(koord):
         try:
-            if int(row) == koord[i][0] and int(col) == koord[i][1]:
+            if int(row) == value[0] and int(col) == value[1]:
                 raise ValueError(
                     message
                 )
-        except ValueError as e:
-            print(f"Invalid data: {e}, please try again.\n")
+        except ValueError as e_msg:
+            print(f"Invalid data: {e_msg}, please try again.\n")
             return False
     return True
 
@@ -105,8 +105,8 @@ def populate_board(board, ships):
     This function will place out the ships in the player board
     to display it to the terminal
     """
-    for i in range(len(ships)):
-        board[ships[i][0]][ships[i][1]] = "#"
+    for index, value in enumerate(ships):
+        board[value[0]][value[1]] = "#"
     return board
 
 
@@ -118,8 +118,8 @@ def computer_choice(choices):
         x = randint(0, 4)
         y = randint(0, 4)
         chosen = "no"
-        for i in range(len(choices)):
-            if x == choices[i][0] and y == choices[i][1]:
+        for index, value in enumerate(choices):
+            if x == value[0] and y == value[1]:
                 chosen = "yes"
         if chosen == "yes":
             continue
@@ -150,11 +150,11 @@ def display_board(board):
     Display board as a string and to delete square brackets and
     comma.
     """
-    for i in range(len(board)):
+    for i, aval in enumerate(board):
         string = ""
         for j in range(5):
             string += "    "
-            string += "".join(board[i][j])
+            string += "".join(aval[j])
         print(string)
 
 
