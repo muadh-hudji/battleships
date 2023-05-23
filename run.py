@@ -5,9 +5,9 @@ from random import randint
 def board():
     """
     Creates game board consisting of 5 rows and columns.
-    The board are created of multilist, every index of 
+    The board are created of multilist, every index of
     the list shall contain a point "." representing
-    that position of the board. 
+    that position of the board.
     """
     size = 5
     empty_game_board = []
@@ -51,7 +51,7 @@ def add_data_manually(koord, num, type_action):
     The function returns a multilist that contains the
     number of rows and colums where the ships will be
     placed on the board. The number of rows and columns
-    are taken as an input from the user in range 0 - 4. 
+    are taken as an input from the user in range 0 - 4.
     The function requires input for position of 4 ships.
     """
     if type_action == "populate":
@@ -128,10 +128,10 @@ def computer_choice(choices):
     """
     Receives an empty list to add a random integer
     numbers of the position where the computer attack
-    will take a place on user board. Returns the list 
+    will take a place on user board. Returns the list
     with the recently added position. The function will
-    loop until its provide a position which are 
-    not used before.  
+    loop until its provide a position which are
+    not used before.
     """
     while True:
         x_row = randint(0, 4)
@@ -150,7 +150,12 @@ def computer_choice(choices):
 
 def attack_board(board0, board1, attack_list, score):
     """
-    Attack board makes changes on the board by adding attack position
+    Receive two boards, list of attack positions and the score,
+    one of the boards used to hide the ships of the computer,
+    and the other as a reference to check the content on specific
+    position. The function adds asterisk mark "*" if it is a hit,
+    or "X" if it is a miss. Returns the boards, incremented score
+    if it is a hit, and a message.
     """
     if board1[attack_list[-1][0]][attack_list[-1][1]] == "#":
         board1[attack_list[-1][0]][attack_list[-1][1]] = "*"
@@ -166,8 +171,8 @@ def attack_board(board0, board1, attack_list, score):
 
 def display_board(game_board):
     """
-    Display board as a string and to delete square brackets and
-    comma.
+    Displays the board as a string by looping through
+    the multilist. It prints out one row at a time.
     """
     for _, aval in enumerate(game_board):
         string = ""
@@ -179,9 +184,10 @@ def display_board(game_board):
 
 def play_game(u_board, c_board):
     """
-    The function take the input of postion to attack
-    from the computer and player, and give the result
-    by displaying out the boards.
+    This function is the main function of the game
+    after creating a new game. The function is used to
+    manage game steps to make inputs, attack, display
+    the result and boards.
     """
     list_choices = []
     computer_choices = []
@@ -234,7 +240,9 @@ def play_game(u_board, c_board):
 
 def new_game():
     """
-    Start a new game
+    Start a new game by calling other functions to create
+    game boards, choose the position of the ships. The User
+    is able to  distibute the ships automatically or manually.
     """
     player_board = board()
     computer_board = board()
@@ -271,8 +279,8 @@ def new_game():
 
 def game_menu():
     """
-    In the menu of the game, the user is able to start a new game
-    or read the game rules or exit the game.
+    In the menu of the game, the user is able to start a new game,
+    read the rules or exit the game by typing 1, 2 or 3.
     """
     while True:
         print("")
