@@ -1,3 +1,4 @@
+"""Battleship game"""
 from random import randint
 
 
@@ -7,11 +8,11 @@ def board():
     """
     size = 5
     empty_game_board = []
-    for i in range(size):
-        list = []
-        for x in range(size):
-            list.append(".")
-        empty_game_board.append(list)
+    for _ in range(size):
+        row_list = []
+        for _ in range(size):
+            row_list.append(".")
+        empty_game_board.append(row_list)
     return empty_game_board
 
 
@@ -27,7 +28,7 @@ def add_ships_auto():
         x_label = randint(0, 4)
         y_label = randint(0, 4)
         busy = "no"
-        for index, value in enumerate(koord):
+        for _, value in enumerate(koord):
             if x_label == value[0] and y_label == value[1]:
                 busy = "yes"
         if busy == "yes":
@@ -38,13 +39,13 @@ def add_ships_auto():
     return koord
 
 
-def add_data_manually(koord, num, type):
+def add_data_manually(koord, num, type_action):
     """
     The function take an input from the player for
     the rows and columns for the koordinate where
     the ships will be populated
     """
-    if type == "populate":
+    if type_action == "populate":
         msg = "where the ships will be populated"
     else:
         msg = "you want attack"
@@ -55,16 +56,16 @@ def add_data_manually(koord, num, type):
         print("")
         data_row = input("Enter row number:\n")
         data_col = input("Enter column number:\n")
-        if validate_data(data_row, data_col, koord, type):
+        if validate_data(data_row, data_col, koord, type_action):
             data = [int(data_row), int(data_col)]
             koord.append(data)
             num -= 1
-            if type == "populate":
+            if type_action == "populate":
                 print(f"Ship placed in row {data_row} and column {data_col}")
     return koord
 
 
-def validate_data(row, col, koord, type):
+def validate_data(row, col, koord, type_action):
     """
     Inside the try, converts all string values into integers.
     Raises ValueError if strings cannot be converted into int,
@@ -82,13 +83,13 @@ def validate_data(row, col, koord, type):
     except ValueError as e_msg:
         print(f"Invalid data: {e_msg}, please try again.\n")
         return False
-    if type == "populate":
+    if type_action == "populate":
         message = ("You have already placed a ship in row " + str(row) +
                    " column " + str(col))
     else:
         message = ("You have already attacked the position at row " +
                    str(row) + " column " + str(col))
-    for index, value in enumerate(koord):
+    for _, value in enumerate(koord):
         try:
             if int(row) == value[0] and int(col) == value[1]:
                 raise ValueError(
@@ -100,14 +101,14 @@ def validate_data(row, col, koord, type):
     return True
 
 
-def populate_board(board, ships):
+def populate_board(game_board, ships):
     """
     This function will place out the ships in the player board
     to display it to the terminal
     """
-    for index, value in enumerate(ships):
-        board[value[0]][value[1]] = "#"
-    return board
+    for _, value in enumerate(ships):
+        game_board[value[0]][value[1]] = "#"
+    return game_board
 
 
 def computer_choice(choices):
@@ -115,42 +116,42 @@ def computer_choice(choices):
     Function to produce a choice for the computer player
     """
     while True:
-        x = randint(0, 4)
-        y = randint(0, 4)
+        x_row = randint(0, 4)
+        y_col = randint(0, 4)
         chosen = "no"
-        for index, value in enumerate(choices):
-            if x == value[0] and y == value[1]:
+        for _, value in enumerate(choices):
+            if x_row == value[0] and y_col == value[1]:
                 chosen = "yes"
         if chosen == "yes":
             continue
-        choice = [x, y]
+        choice = [x_row, y_col]
         choices.append(choice)
         break
     return choices
 
 
-def attack_board(board0, board1, list, score):
+def attack_board(board0, board1, attack_list, score):
     """
     Attack board makes changes on the board by adding attack position
     """
-    if board1[list[-1][0]][list[-1][1]] == "#":
-        board1[list[-1][0]][list[-1][1]] = "*"
-        board0[list[-1][0]][list[-1][1]] = "*"
+    if board1[attack_list[-1][0]][attack_list[-1][1]] == "#":
+        board1[attack_list[-1][0]][attack_list[-1][1]] = "*"
+        board0[attack_list[-1][0]][attack_list[-1][1]] = "*"
         message = "made a hit"
         score += 1
     else:
-        board1[list[-1][0]][list[-1][1]] = "X"
-        board0[list[-1][0]][list[-1][1]] = "X"
+        board1[attack_list[-1][0]][attack_list[-1][1]] = "X"
+        board0[attack_list[-1][0]][attack_list[-1][1]] = "X"
         message = "missed"
     return board0, board1, message, score
 
 
-def display_board(board):
+def display_board(game_board):
     """
     Display board as a string and to delete square brackets and
     comma.
     """
-    for i, aval in enumerate(board):
+    for _, aval in enumerate(game_board):
         string = ""
         for j in range(5):
             string += "    "
