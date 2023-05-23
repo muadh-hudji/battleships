@@ -4,7 +4,10 @@ from random import randint
 
 def board():
     """
-    Creates game board
+    Creates game board consisting of 5 rows and columns.
+    The board are created of multilist, every index of 
+    the list shall contain a point "." representing
+    that position of the board. 
     """
     size = 5
     empty_game_board = []
@@ -19,7 +22,11 @@ def board():
 def add_ships_auto():
 
     """
-    Add 5 ships in the computer board randomly
+    The function returns a multilist that contains the
+    number of rows and colums where the ships will be
+    placed on the board. The number of rows and columns
+    are produced randomly in range 0 - 4. The function
+    provide position for 4 ships.
     """
 
     ships = 0
@@ -41,9 +48,11 @@ def add_ships_auto():
 
 def add_data_manually(koord, num, type_action):
     """
-    The function take an input from the player for
-    the rows and columns for the koordinate where
-    the ships will be populated
+    The function returns a multilist that contains the
+    number of rows and colums where the ships will be
+    placed on the board. The number of rows and columns
+    are taken as an input from the user in range 0 - 4. 
+    The function requires input for position of 4 ships.
     """
     if type_action == "populate":
         msg = "where the ships will be populated"
@@ -69,7 +78,9 @@ def validate_data(row, col, koord, type_action):
     """
     Inside the try, converts all string values into integers.
     Raises ValueError if strings cannot be converted into int,
-    or if there numbers not between 0-4
+    or if there are numbers not between 0-4. The function will
+    also validate if the numbers recently provided has been
+    provided before and raises ValueError if it is.
     """
     try:
         int(row)
@@ -103,8 +114,10 @@ def validate_data(row, col, koord, type_action):
 
 def populate_board(game_board, ships):
     """
-    This function will place out the ships in the player board
-    to display it to the terminal
+    This function takes the multilist which considered
+    as the game board and a list of positions where the
+    ships will be placed. The position of the ships will
+    be given a hashtag character "#".
     """
     for _, value in enumerate(ships):
         game_board[value[0]][value[1]] = "#"
@@ -113,7 +126,12 @@ def populate_board(game_board, ships):
 
 def computer_choice(choices):
     """
-    Function to produce a choice for the computer player
+    Receives an empty list to add a random integer
+    numbers of the position where the computer attack
+    will take a place on user board. Returns the list 
+    with the recently added position. The function will
+    loop until its provide a position which are 
+    not used before.  
     """
     while True:
         x_row = randint(0, 4)
