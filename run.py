@@ -182,9 +182,6 @@ def play_game(u_board, c_board):
                                                        computer_choices,
                                                        c_score)
         print("")
-        print(f"You {msg1}, your score: {u_score}")
-        print("")
-        print(f"Computer {msg2}, computer score: {c_score}")
         print("*" * 28)
         print("        Player board")
         print("*" * 28)
@@ -195,6 +192,13 @@ def play_game(u_board, c_board):
         print("        Computer board")
         print("*" * 28)
         display_board(hide_board)
+        print("")
+        print("_" * 38)
+        print(" "*15, "Result")
+        print(f"You {msg1}, your score: {u_score}")
+        print("")
+        print(f"Computer {msg2}, computer score: {c_score}")
+        print("_" * 38)
         if u_score == 4 or c_score == 4:
             if u_score == 4 and c_score == 4:
                 print("Draw!")
@@ -220,7 +224,7 @@ def new_game():
 
     print("Do you want to place out your ships manually?")
     choose_to_select = input("Enter any key for yes or n for no:\n")
-    if choose_to_select == "n":
+    if choose_to_select.lower() == "n":
         player_ships = add_ships_auto()
     else:
         player_ships = add_data_manually(list_ships_pos, num_ships, "populate")
@@ -246,10 +250,47 @@ def new_game():
     play_game(player_board, computer_board)
 
 
-while True:
-    print("")
-    print("Do you want to play?")
-    play = input("Enter yes if you want to play\n")
-    print(" ")
-    if play.lower() == "yes":
-        new_game()
+def game_menu():
+    """
+    In the menu of the game, the user is able to start a new game
+    or read the game rules or exit the game.
+    """
+    while True:
+        print("")
+        print("The Menu")
+        print("1 - Start a new game")
+        print("2 - Game rules")
+        print("3 - Exit")
+        alternative = input("Enter 1, 2 or 3\n")
+        print(" ")
+        if alternative == "1":
+            new_game()
+        elif alternative == "2":
+            print("-"*58)
+            print(" "*24, "Rules")
+            print("Battleship is a guessing strategy game for two players. \
+\nIt is played on two grid boards where a number of ships \
+\nare distributed. The ships are hidden from each player.\n\
+Players take turns attacking the other player by guessing\n\
+the position of the ships on the board.")
+            print("")
+            print("The board consists of 5 rows and columns, and \
+the attack\ninput has to be in numbers between 0 - 4.")
+            print("")
+            print("Your ships can be distributed on the board automatically\
+\nor manually, the input has to be in numbers between 0 - 4.")
+            print("")
+            print("The player who hits 4 ships first wins the game.")
+            print("-"*58)
+        elif alternative == "3":
+            break
+        else:
+            print(f"Invalid data: You provided following input {alternative}, \
+the input has\nto be as described below, please try again.")
+
+
+print("")
+print("*"*33)
+print("   Welcome to battleship game!")
+print("*"*33)
+game_menu()
