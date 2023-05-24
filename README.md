@@ -1,31 +1,28 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Battleships
+Battleships is a guessing strategy terminal game developed by python, the game runs in the Code Institute mock terminal on Heroku.
 
-Welcome muadh hudji,
+The Users will challenge the computer to hit all of the oponents ships first to win the game. The boards have a size of five rows and columns. In the boards there is four ships distributed and are invisible for the opponents. 
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+[Live link](https://battleships-mh.herokuapp.com/)
 
-## Reminders
+## How to play
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+## Features
 
-## Creating the Heroku app
+### Existing Features
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+### Future Features
 
-1. `heroku/python`
-2. `heroku/nodejs`
+## Data Model
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+## Testing
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+### Bugs
 
-Connect your GitHub repository and deploy as normal.
+### Remaining Bugs
 
-## Constraints
+### Validator
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+## Deployment
 
------
-Happy coding!
+## Credits
