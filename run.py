@@ -268,10 +268,7 @@ def new_game():
     print("        Computer board")
     print("*" * 28)
     display_board(computer_board)
-    print("")
-    print("Computers Ships populated in following places")
     computer_ships = add_ships_auto()
-    print(computer_ships)
     computer_board = populate_board(computer_board, computer_ships)
 
     play_game(player_board, computer_board)
