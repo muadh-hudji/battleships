@@ -230,10 +230,10 @@ def play_game(u_board, c_board):
                 print(f"Your score: {u_score}. Computer score: {c_score}")
             elif u_score == 4:
                 print("Congratulation you win!")
-                print(f"your score: {u_score}. Computer score: {c_score}")
+                print(f"Your score: {u_score}. Computer score: {c_score}")
             else:
                 print("You lost!")
-                print(f"Your score: {u_score}, Computer score: {c_score}")
+                print(f"Your score: {u_score}. Computer score: {c_score}")
             break
         print("")
 
