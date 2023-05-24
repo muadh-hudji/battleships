@@ -6,6 +6,8 @@ The Users will challenge the computer to hit all of the oponents ships first to 
 [Live link](https://battleships-mh.herokuapp.com/)
 
 ## How to play
+The game begins with a menu of the three options, start new game, read the rules or exit the game. Once the users enter "1" to start a new game, the users will be asked if they wish to pick where the ships will be placed on the board automatically or manually. The game will start after generating two boards with 4 ships distributed on the board manually or randomly by the computer.
+
 
 ## Features
 
@@ -13,7 +15,9 @@ The Users will challenge the computer to hit all of the oponents ships first to 
 
 ### Future Features
 
+
 ## Data Model
+
 
 ## Testing
 
@@ -23,6 +27,8 @@ The Users will challenge the computer to hit all of the oponents ships first to 
 
 ### Validator
 
+
 ## Deployment
+
 
 ## Credits
