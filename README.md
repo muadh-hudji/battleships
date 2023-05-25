@@ -61,7 +61,7 @@ Whoever hits all the opponent's ships first will win the game.
 - Give the user the option to select the size of the board and number of ships
 
 ## Data Model
-I decided to build the game by several functions, the main functions will call other functions to generate the lists of the board, ships positions, attack positions, display the boards, integrate the lists etc...
+I decided to build the game by several functions, the main functions will call other functions to generate the lists of the board, ship positions, attack positions, display the boards, integrate the lists etc...
 
 The functions created for the game are:
 - board  - Generates mutliple lists that considered as the board
@@ -77,7 +77,13 @@ The functions created for the game are:
 
 ## Testing
 The game has been manually tested to ensure that everything is working as it should:
-- Gave invalid inputs: strings when numbers input expected, numbers not in required range and inputs that have been given before.
+- Invalid inputs:
+    - Strings when numbers input expected.
+    - Numbers out of required range.
+    - Identical number inputs.
+    - Uppercase letters when lowercase expected.
+    - Other inputs when specific letters or numbers are expected.
+- The game has been tested by playing several times to check that everything is working as it is expected. And even to be secure that when the user starts a new game no older data from previous game are still there.
 - Test is made in the local terminal and in Heroku
 
 ### Bugs
