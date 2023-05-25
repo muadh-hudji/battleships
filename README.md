@@ -62,15 +62,37 @@ Whoever hits all the opponent's ships first will win the game.
 
 
 ## Testing
+The game has been manually tested to ensure that everything is working as it should:
+- Gave invalid inputs: strings when numbers input expected, numbers not in required range and inputs given before.
+- Test is made in the local terminal and in Heroku
 
 ### Bugs
+- Suggestion to use enumerate instead of iterating by range and len is implemented.
+- Add auto ships function sometimes added 3 or 5 ships because the if statement was'nt directly in the while loop, to solve the problem i added a for loop to check the data and the result of validation is stored in a variabel, which in next step outside the for loop goes in a if statement to check if the data is approved.
 
 ### Remaining Bugs
+- There are no known bugs remains.
 
 ### Validator
-
+- PEP8
+    - No errors were returned from pep8ci.herokuapp.com
 
 ## Deployment
+This project was deployed using Code institute's mock terminal for Heroku.
 
+- Steps for deployment
+    - Commit and push the final code to Github
+    - On Heroku site, create a new app
+    - Give the app an unique name
+    - Under tab settings, add a Config Vars key "PORT" value "8000"
+    - Then click on "Add buildpack" and select "heroku/python"
+    - Add another buildpack and select "heroku/nodejs"
+    - Underneath tab "Deploy" connect to Github account
+    - Select the repository
+    - Finally click on "Deploy Branch"
 
 ## Credits
+- Ide of the game from "Ultimate Battleships"
+- Details about the game from Wikipedia
+- Python terminal by Code Institute 
+- Validator pep8ci.herokuapp.com
