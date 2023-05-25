@@ -1,5 +1,5 @@
 # Battleships
-Battleships is a guessing strategy terminal game developed by python, the game runs in the Code Institute mock terminal on Heroku.
+Battleships is a guessing strategy terminal game developed by python language, the game runs in the Code Institute mock terminal on Heroku.
 
 The Users will challenge the computer to hit all of the oponents ships first to win the game. The boards have a size of five rows and columns. In the boards there is four ships distributed and are invisible for the opponents. 
 
@@ -27,9 +27,9 @@ Whoever hits all the opponent's ships first will win the game.
 ![Responsice Mockup](https://github.com/muadh-hudji/battleships/blob/f8dbb3700fdffc037b3844fec53491ce08aaf637/assets/images/game_rules.PNG)     
 
 - __Board generation__
-    - When the users starts a new game, the users will be asked if they wants to chosse the position of own ships by entering any key for yes or n for no.
+    - When the users starts a new game, the users will be asked if they wants to chosse the positions of own ships by entering any key for yes or n for no.
     - If the users chose to place out the ships manually, they will be asked to enter row and column number in range 0 - 4 for position of four ships. 
-    - If the users chose to not place out the ships manually, the computer will make a randomly choice of the positions of the ships.
+    - If the users chose to not place out the ships manually, the computer will make a randomly choice for the positions of the ships.
 
 ![Responsice Mockup](https://github.com/muadh-hudji/battleships/blob/f8dbb3700fdffc037b3844fec53491ce08aaf637/assets/images/place_ships.PNG)         
 
@@ -56,19 +56,31 @@ Whoever hits all the opponent's ships first will win the game.
 ![Responsice Mockup](https://github.com/muadh-hudji/battleships/blob/fe96184115fbb2736173b8bc70cf506a2c49ecae/assets/images/end_result.PNG)     
 
 ### Future Features
-- Let the user to choose the size of the board and number of ships
+- Give the user the option to select the size of the board and number of ships
 
 ## Data Model
+I decided to build the game by several functions, the main functions will call other functions to generate the lists of the board, ships positions, attack positions, display the boards, integrate the lists etc...
 
+The functions created for the game are:
+- board  - Generates mutliple lists that considered as the board
+- add ships auto - generates data for the position of the ships
+- add data manually  - takes input from the user for ships position or attack position
+- validate data  - validates the data input from the user
+- populate board   - Integrate the ships in the board
+- computer choice  - Generate a randomly numbers for attack position
+- display board  - displays out the boards
+- play game  - main function when a game is created
+- new game  - main function to generate a new game 
+- main function  - main function contains the menu 
 
 ## Testing
 The game has been manually tested to ensure that everything is working as it should:
-- Gave invalid inputs: strings when numbers input expected, numbers not in required range and inputs given before.
+- Gave invalid inputs: strings when numbers input expected, numbers not in required range and inputs that have been given before.
 - Test is made in the local terminal and in Heroku
 
 ### Bugs
 - Suggestion to use enumerate instead of iterating by range and len is implemented.
-- Add auto ships function sometimes added 3 or 5 ships because the if statement was'nt directly in the while loop, to solve the problem i added a for loop to check the data and the result of validation is stored in a variabel, which in next step outside the for loop goes in a if statement to check if the data is approved.
+- Add auto ships function sometimes added 3 or 5 ships because the if statement wasn't directly in the while loop, to solve the problem i added a for loop to check the data and the result of the validation is stored in a variabel, which in next step outside the for loop goes in an if statement to check if the data is approved.
 
 ### Remaining Bugs
 - There are no known bugs remains.
