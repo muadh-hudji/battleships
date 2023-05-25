@@ -60,7 +60,7 @@ def add_data_manually(koord, num, type_action):
         msg = "you want attack"
     while num > 0:
         print("")
-        print(f"Please enter the koordinate {msg}")
+        print(f"Please enter the coordinate {msg}")
         print("The numbers shall be between 0-4 for the row and column")
         print("")
         data_row = input("Enter row number:\n")

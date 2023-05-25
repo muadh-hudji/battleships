@@ -23,7 +23,26 @@ Whoever hits all the opponent's ships first will win the game.
     - The program begins with displaying out game name
     - The Menu of the game contains three options, start a new game, game rules and exit. The user can make a choice between these options by entering 1, 2 or 3.
     - By Entering 2 the user is able to read about how to play the game.
-![Responsice Mockup](assets/images/game_rules.PNG)     
+
+![Responsice Mockup](https://github.com/muadh-hudji/battleships/blob/f8dbb3700fdffc037b3844fec53491ce08aaf637/assets/images/game_rules.PNG)     
+
+-__Board generation__
+    - When the users starts a new game, the users will be asked if they wants to chosse the position of own ships by entering any key for yes or n for no.
+    - If the users chose to place out the ships manually, they will be asked to enter row and column number in range 0 - 4 for position of four ships. 
+    - If the users chose to not place out the ships manually, the computer will make a randomly choice of the positions of the ships.
+
+![Responsice Mockup](https://github.com/muadh-hudji/battleships/blob/f8dbb3700fdffc037b3844fec53491ce08aaf637/assets/images/place_ships.PNG)         
+
+-__Game boards__
+    - When the boards are generated, it will be displayed out on the terminal, the users are able to se their own ships on the board, but not the ships of the computer.
+    - The boards consists of five rows and columns and has the index in range 0 - 4.
+    - Next step, the users will be asked to enter the position they wants to attack by typing numbers in range 0 - 4 for row and column
+
+![Responsice Mockup](https://github.com/muadh-hudji/battleships/blob/f8dbb3700fdffc037b3844fec53491ce08aaf637/assets/images/populated_board.PNG) 
+
+-__Input validation__
+    - All users inputs are validated, this when users makes inputs to pick an option of the menu, answering if they wants to place out the ships manually, when they makes input for position where the ships will be placed or when they entering the position they wants to attack.
+    - 
 
 ### Future Features
 
