@@ -41,11 +41,22 @@ Whoever hits all the opponent's ships first will win the game.
 ![Responsice Mockup](https://github.com/muadh-hudji/battleships/blob/f8dbb3700fdffc037b3844fec53491ce08aaf637/assets/images/populated_board.PNG) 
 
 -__Input validation__
-    - All users inputs are validated, this when users makes inputs to pick an option of the menu, answering if they wants to place out the ships manually, when they makes input for position where the ships will be placed or when they entering the position they wants to attack.
-    - 
+    - All users inputs are validated, this when users makes inputs to pick an option of the menu, answering if they wants to place out the ships manually, when they makes input for position where the ships will be placed and when they entering the position they wants to attack.
+    - The play game input has to be in number between 0 - 4, numbers outside this range is not approved. The user cannot either enter same position twice.
+
+![Responsice Mockup](https://github.com/muadh-hudji/battleships/blob/fe96184115fbb2736173b8bc70cf506a2c49ecae/assets/images/invalid_input.PNG)   
+
+![Responsice Mockup](https://github.com/muadh-hudji/battleships/blob/fe96184115fbb2736173b8bc70cf506a2c49ecae/assets/images/same_postion.PNG) 
+
+-__End of the game__
+    - After every round the result will be displayed with the boards, if one player makes a hit the score will be incremented with one.
+    - The first player who hits all of the four ships wins the game.
+    - When the game is finished, the users will get back to the game menu to make a choice again.
+
+![Responsice Mockup](https://github.com/muadh-hudji/battleships/blob/fe96184115fbb2736173b8bc70cf506a2c49ecae/assets/images/end_result.PNG)     
 
 ### Future Features
-
+- Let the user to choose the size of the board and number of ships
 
 ## Data Model
 
