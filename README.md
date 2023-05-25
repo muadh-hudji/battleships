@@ -1,5 +1,5 @@
 # Battleships
-Battleships is a guessing strategy terminal game developed with python language, the game runs in the Code Institute mock terminal on Heroku.
+Battleships is a guessing strategy terminal game developed using python language, the game runs in the Code Institute mock terminal on Heroku.
 
 The Users will challenge the computer to hit all of the oponents ships first to win the game. The boards have a size of five rows and columns. In the boards there is four ships distributed and are invisible for the opponents. 
 
@@ -81,7 +81,8 @@ The game has been manually tested to ensure that everything is working as it sho
 - Test is made in the local terminal and in Heroku
 
 ### Bugs
-- Suggestion to use enumerate instead of iterating by range and len is implemented.
+- The input from the user when they enter "N" in capital letter for the question if they want to place out the ships manually, didn't work well because the if statement is expecting "n" in small letter. The problem is solved by using lower function to convert the input to lowercase.
+- When the boards was printed out by using pprint, the boards was displayed out with the comma and the square brackets. In order to have the boards displayed without any more characters than the content, i have created a function to loop through the boards and print out one row at the time.
 - Add auto ships function sometimes added 3 or 5 ships because the if statement wasn't directly in the while loop, to solve the problem i added a for loop to check the data and the result of the validation is stored in a variabel, which in next step outside the for loop goes in an if statement to check if the data is approved.
 
 ### Remaining Bugs
