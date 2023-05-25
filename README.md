@@ -106,6 +106,19 @@ This project was deployed using Code institute's mock terminal for Heroku.
     - Select the repository
     - Finally click on "Deploy Branch"
 
+### Copy Clone
+- The project can be cloned by following steps:
+    - Navigate in Github after the repository for the project "battleships"
+    - On the top of the page click on the green button "<>Code"
+    - Underneath Local tab, click on "HTTPS"
+    - Chose to clone the project by either the address, "Open with GitHub desktop" or download as a ZIP-file
+
+### Create a new Fork 
+- Create new fork by following steps:
+    - Navigate in Github after the repository for the project "battleships"
+    - On the top of the page on the right side, click on "Fork"
+    - Select "Create new fork"
+
 ## Credits
 - Ide of the game from "Ultimate Battleships"
 - Details about the game from Wikipedia
