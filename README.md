@@ -19,6 +19,12 @@ Whoever hits all the opponent's ships first will win the game.
 
 ### Existing Features
 
+-__The Menu__
+    - The program begins with displaying out game name
+    - The Menu of the game contains three options, start a new game, game rules and exit. The user can make a choice between these options by entering 1, 2 or 3.
+    - By Entering 2 the user is able to read about how to play the game.
+![Responsice Mockup](assets/images/game_rules.PNG)     
+
 ### Future Features
 
 
